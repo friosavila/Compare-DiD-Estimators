@@ -84,8 +84,10 @@ matrix dcdh_b = e(estimates) // storing the estimates for later
 matrix dcdh_v = e(variances)
 
 // Estimation with csdid of Callaway and Sant'Anna (2020)
+// Should be Callaway and Sant'Anna (2021). 
 csdid Y, ivar(i) time(t) gvar(gvar) notyet
 estat event, estore(cs) // this produces and stores the estimates at the same time
+// And for the method by method figure, you could use "window(-5 8)" so that you have the same range as the others
 $ep cs, stub_lag(Tp#) stub_lead(Tm#) $t $g0 graph_opt($g ti("CS 20") name(gCS, replace))
 
 // Estimation with eventstudyinteract of Sun and Abraham (2020)
